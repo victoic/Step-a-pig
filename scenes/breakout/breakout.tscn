@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgxsddpyf21pn"]
+
+[ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
+[ext_resource type="Script" uid="uid://6xe3gbid7nij" path="res://scenes/ball/ball.gd" id="2_txkdx"]
+
+[node name="Breakout" type="Node2D" unique_id=1225362817]
+
+[node name="Player" parent="." unique_id=525746072 instance=ExtResource("1_rrrli")]
+position = Vector2(492, 598)
+
+[node name="Ball" type="StaticBody2D" parent="." unique_id=673267237]
+script = ExtResource("2_txkdx")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ball" unique_id=611292756]
