@@ -1,0 +1,1 @@
+class_name PigContainer extends Node2D

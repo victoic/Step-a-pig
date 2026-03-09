@@ -11,16 +11,16 @@ var bar_size: Vector2 = Vector2(100, 10):
 
 func set_sizes() -> void:
 	polygon.polygon = PackedVector2Array([
-		Vector2(0, 0),
-		Vector2(0, bar_size.y),
-		Vector2(bar_size.x, bar_size.y),
-		Vector2(bar_size.x, 0)
+		Vector2(0, 0) - (bar_size / 2),
+		Vector2(0, bar_size.y) - (bar_size / 2),
+		Vector2(bar_size.x, bar_size.y) - (bar_size / 2),
+		Vector2(bar_size.x, 0) - (bar_size / 2)
 	])
 	collision.shape.size = bar_size
 
 func _ready() -> void:
 	set_sizes()
-	position.x = get_viewport_rect().size.x / 2 - bar_size.x / 2
+	position.x = get_viewport_rect().size.x / 2
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("left"):

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cgxsddpyf21pn"]
+
+[ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
+[ext_resource type="Script" uid="uid://6xe3gbid7nij" path="res://scenes/ball/ball.gd" id="2_txkdx"]
+[ext_resource type="Script" uid="uid://keqo2r1s8dx5" path="res://scenes/wall/wall.gd" id="3_naopy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkdx"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_txkdx"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_naopy"]
+a = Vector2(1152, 0)
+b = Vector2(1152, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mrr4g"]
+b = Vector2(1152, 0)
+
+[node name="Breakout" type="Node2D" unique_id=1225362817]
+
+[node name="Player" parent="." unique_id=525746072 instance=ExtResource("1_rrrli")]
+position = Vector2(492, 598)
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=1088842808]
+position = Vector2(482, 566)
+script = ExtResource("2_txkdx")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ball" unique_id=611292756]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1383687182]
+shape = SubResource("RectangleShape2D_txkdx")
+
+[node name="BounceWalls" type="StaticBody2D" parent="." unique_id=143672637]
+
+[node name="LeftWall" type="CollisionShape2D" parent="BounceWalls" unique_id=1520152105]
+shape = SubResource("SegmentShape2D_txkdx")
+script = ExtResource("3_naopy")
+
+[node name="RightWall" type="CollisionShape2D" parent="BounceWalls" unique_id=490354654]
+shape = SubResource("SegmentShape2D_naopy")
+script = ExtResource("3_naopy")
+
+[node name="UpWall" type="CollisionShape2D" parent="BounceWalls" unique_id=172951044]
+shape = SubResource("SegmentShape2D_mrr4g")
+script = ExtResource("3_naopy")
+is_horizontal = false
+is_vertical = true
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]

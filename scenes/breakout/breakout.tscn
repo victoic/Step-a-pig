@@ -1,14 +1,79 @@
 [gd_scene format=3 uid="uid://cgxsddpyf21pn"]
 
 [ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
-[ext_resource type="Script" uid="uid://6xe3gbid7nij" path="res://scenes/ball/ball.gd" id="2_txkdx"]
+[ext_resource type="PackedScene" uid="uid://cbg8qdon7enmp" path="res://scenes/ball/ball.tscn" id="2_naopy"]
+[ext_resource type="PackedScene" uid="uid://b7v5lcg7mch5a" path="res://scenes/wall/bounce_walls.tscn" id="3_mrr4g"]
+[ext_resource type="Script" uid="uid://4qpi3bxm2jns" path="res://scenes/pig/pig_container.gd" id="4_j01ti"]
+[ext_resource type="Script" uid="uid://de2hr0axigb73" path="res://scenes/pig/pig.gd" id="4_mrr4g"]
+[ext_resource type="Texture2D" uid="uid://bbo2w6pqrik02" path="res://assets/sprites/pig/pig01.png" id="6_im6c2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wskoe"]
+size = Vector2(100, 50)
+
+[sub_resource type="Animation" id="Animation_mrr4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wskoe"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j01ti"]
+_data = {
+&"RESET": SubResource("Animation_mrr4g"),
+&"death": SubResource("Animation_wskoe")
+}
 
 [node name="Breakout" type="Node2D" unique_id=1225362817]
 
 [node name="Player" parent="." unique_id=525746072 instance=ExtResource("1_rrrli")]
 position = Vector2(492, 598)
 
-[node name="Ball" type="StaticBody2D" parent="." unique_id=673267237]
-script = ExtResource("2_txkdx")
+[node name="Ball" parent="." unique_id=415933655 instance=ExtResource("2_naopy")]
+position = Vector2(482, 566)
 
-[node name="Polygon2D" type="Polygon2D" parent="Ball" unique_id=611292756]
+[node name="BounceWalls" parent="." unique_id=1731200681 instance=ExtResource("3_mrr4g")]
+
+[node name="PigContainer" type="Node2D" parent="." unique_id=1209201113]
+script = ExtResource("4_j01ti")
+
+[node name="Pig" type="RigidBody2D" parent="PigContainer" unique_id=299956048]
+position = Vector2(663, 329)
+gravity_scale = 0.0
+script = ExtResource("4_mrr4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="PigContainer/Pig" unique_id=78785136]
+texture = ExtResource("6_im6c2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PigContainer/Pig" unique_id=707517002]
+shape = SubResource("RectangleShape2D_wskoe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PigContainer/Pig" unique_id=1332302607]
+libraries/ = SubResource("AnimationLibrary_j01ti")
+
+[connection signal="body_entered" from="PigContainer/Pig" to="PigContainer/Pig" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="PigContainer/Pig" to="PigContainer/Pig" method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="PigContainer/Pig/AnimationPlayer" to="PigContainer/Pig" method="_on_animation_player_animation_finished"]

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b7v5lcg7mch5a"]
+
+[ext_resource type="Script" uid="uid://keqo2r1s8dx5" path="res://scenes/wall/wall.gd" id="1_vn246"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_txkdx"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_naopy"]
+a = Vector2(1152, 0)
+b = Vector2(1152, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mrr4g"]
+b = Vector2(1152, 0)
+
+[node name="BounceWalls" type="StaticBody2D" unique_id=1731200681]
+
+[node name="LeftWall" type="CollisionShape2D" parent="." unique_id=1483968715]
+shape = SubResource("SegmentShape2D_txkdx")
+script = ExtResource("1_vn246")
+
+[node name="RightWall" type="CollisionShape2D" parent="." unique_id=486108188]
+shape = SubResource("SegmentShape2D_naopy")
+script = ExtResource("1_vn246")
+
+[node name="UpWall" type="CollisionShape2D" parent="." unique_id=1249223293]
+shape = SubResource("SegmentShape2D_mrr4g")
+script = ExtResource("1_vn246")
+is_horizontal = false
+is_vertical = true

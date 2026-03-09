@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cbg8qdon7enmp"]
+
+[ext_resource type="Script" uid="uid://6xe3gbid7nij" path="res://scenes/ball/ball.gd" id="1_oqv3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkdx"]
+
+[node name="Ball" type="RigidBody2D" unique_id=415933655]
+gravity_scale = 0.0
+script = ExtResource("1_oqv3d")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=213748735]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703325892]
+shape = SubResource("RectangleShape2D_txkdx")
