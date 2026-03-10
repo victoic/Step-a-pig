@@ -2,21 +2,12 @@
 
 [ext_resource type="Script" uid="uid://n8vy6ecuh5mt" path="res://scenes/breakout/breakout.gd" id="1_j01ti"]
 [ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
-[ext_resource type="Script" uid="uid://dm4wcgxbydldb" path="res://resources/levels/level_data.gd" id="2_im6c2"]
 [ext_resource type="PackedScene" uid="uid://cbg8qdon7enmp" path="res://scenes/ball/ball.tscn" id="2_naopy"]
 [ext_resource type="PackedScene" uid="uid://b7v5lcg7mch5a" path="res://scenes/wall/bounce_walls.tscn" id="3_mrr4g"]
 [ext_resource type="Script" uid="uid://4qpi3bxm2jns" path="res://scenes/pig/pig_container.gd" id="4_j01ti"]
 
-[sub_resource type="Resource" id="Resource_j01ti"]
-script = ExtResource("2_im6c2")
-metadata/_custom_type_script = "uid://dm4wcgxbydldb"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j01ti"]
-size = Vector2(1152, 20)
-
 [node name="Breakout" type="Node2D" unique_id=1225362817]
 script = ExtResource("1_j01ti")
-level_data = SubResource("Resource_j01ti")
 
 [node name="Player" parent="." unique_id=525746072 instance=ExtResource("1_rrrli")]
 position = Vector2(492, 598)
@@ -28,11 +19,3 @@ position = Vector2(482, 566)
 
 [node name="PigContainer" type="Node2D" parent="." unique_id=1209201113]
 script = ExtResource("4_j01ti")
-
-[node name="DeathZone" type="Area2D" parent="." unique_id=1695993574]
-position = Vector2(576, 658)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1511544932]
-shape = SubResource("RectangleShape2D_j01ti")
-
-[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
