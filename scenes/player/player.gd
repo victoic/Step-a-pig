@@ -41,20 +41,12 @@ func get_hit_angle(ball: Ball) -> Vector2:
 	var d: Vector2 = deg_to_vec(rotation_degrees)
 	
 	var r: Vector2 = d - 2 * (d.dot(n)) * n
-	'''
-	
-	
-	direction = Vector2(direction.x, abs(direction.y)).normalized()
-	direction = Vector2(0.33, 1) '''
-	print("POS: {0}, {1}".format([ball.position.x, position.x]))
-	print("n: {0}".format([n]))
-	print("d: {0}".format([d]))
-	print("r: {0}".format([r]))
 	return r
 
 func _ready() -> void:
 	set_sizes()
 	position.x = get_viewport_rect().size.x / 2
+	position.y = get_viewport_rect().size.y - 80
 
 func _physics_process(delta: float) -> void:
 	if not Breakout.is_game_over:
