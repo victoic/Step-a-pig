@@ -31,21 +31,21 @@ func _ready() -> void:
 	reset()
 
 func _physics_process(delta: float) -> void:
-	var movement: Vector2 = speed * angle * delta
-	var collision: KinematicCollision2D = move_and_collide(movement)
-	if collision:
-		var collider: Object = collision.get_collider()
-		var collider_shape: Object = collision.get_collider_shape()
-		if is_instance_of(collider_shape, Wall):
-			if is_instance_of(collider, Player):
-				angle = collider.get_hit_angle(self)
-			else:
-				if collider_shape.is_horizontal:
-					angle.x = -angle.x
-				elif collider_shape.is_vertical:
-					angle.y = -angle.y
-		elif is_instance_of(collider, Pig):
-			# detect which side to change direction
-			collider.take_hit(damage)
-			angle.y = -angle.y
-		
+	if not Breakout.is_game_over:
+		var movement: Vector2 = speed * angle * delta
+		var collision: KinematicCollision2D = move_and_collide(movement)
+		if collision:
+			var collider: Object = collision.get_collider()
+			var collider_shape: Object = collision.get_collider_shape()
+			if is_instance_of(collider_shape, Wall):
+				if is_instance_of(collider, Player):
+					angle = collider.get_hit_angle(self)
+				else:
+					if collider_shape.side == Wall.UP_SIDE:
+						angle.y = -angle.y
+					elif collider_shape.side == Wall.LEFT_SIDE or collider_shape.side == Wall.RIGHT_SIDE:
+						angle.x = -angle.x
+			elif is_instance_of(collider, Pig):
+				# detect which side to change direction
+				collider.take_hit(damage)
+				angle.y = -angle.y

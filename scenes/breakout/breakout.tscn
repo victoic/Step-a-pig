@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cbg8qdon7enmp" path="res://scenes/ball/ball.tscn" id="2_naopy"]
 [ext_resource type="PackedScene" uid="uid://b7v5lcg7mch5a" path="res://scenes/wall/bounce_walls.tscn" id="3_mrr4g"]
 [ext_resource type="Script" uid="uid://4qpi3bxm2jns" path="res://scenes/pig/pig_container.gd" id="4_j01ti"]
+[ext_resource type="Script" uid="uid://ch0k4ub46bf0t" path="res://scenes/wall/death_wall.gd" id="7_im6c2"]
 
 [sub_resource type="Resource" id="Resource_j01ti"]
 script = ExtResource("2_im6c2")
 metadata/_custom_type_script = "uid://dm4wcgxbydldb"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j01ti"]
-size = Vector2(1152, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im6c2"]
 
 [node name="Breakout" type="Node2D" unique_id=1225362817]
 script = ExtResource("1_j01ti")
@@ -33,6 +33,9 @@ script = ExtResource("4_j01ti")
 position = Vector2(576, 658)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1511544932]
-shape = SubResource("RectangleShape2D_j01ti")
+shape = SubResource("RectangleShape2D_im6c2")
+script = ExtResource("7_im6c2")
+side = 3
 
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]

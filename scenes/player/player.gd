@@ -1,10 +1,16 @@
 class_name Player extends CharacterBody2D
 
+signal game_over
+
 @onready var polygon: Polygon2D = $Polygon2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
-@export var lives: int = 3
-@export var speed: float = 240
+@export var lives: int = 3:
+	set(value):
+		lives = value
+		if lives <= 0:
+			game_over.emit()
+@export var speed: float = 480
 var half_bar_size: Vector2 = Vector2.ZERO
 var bar_size: Vector2 = Vector2(100, 10):
 	set(value):
@@ -51,8 +57,9 @@ func _ready() -> void:
 	position.x = get_viewport_rect().size.x / 2
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("left"):
-		position.x -= speed * delta
-	elif Input.is_action_pressed("right"):
-		position.x += speed * delta
-	position.x = clampf(position.x, half_bar_size.x, get_viewport_rect().size.x - half_bar_size.x)
+	if not Breakout.is_game_over:
+		if Input.is_action_pressed("left"):
+			position.x -= speed * delta
+		elif Input.is_action_pressed("right"):
+			position.x += speed * delta
+		position.x = clampf(position.x, half_bar_size.x, get_viewport_rect().size.x - half_bar_size.x)

@@ -21,9 +21,9 @@ script = ExtResource("1_vn246")
 [node name="RightWall" type="CollisionShape2D" parent="." unique_id=486108188]
 shape = SubResource("SegmentShape2D_naopy")
 script = ExtResource("1_vn246")
+side = 1
 
 [node name="UpWall" type="CollisionShape2D" parent="." unique_id=1249223293]
 shape = SubResource("SegmentShape2D_mrr4g")
 script = ExtResource("1_vn246")
-is_horizontal = false
-is_vertical = true
+side = 3

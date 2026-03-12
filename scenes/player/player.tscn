@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrrli"]
 
 [node name="Player" type="CharacterBody2D" unique_id=525746072]
+collision_mask = 0
 script = ExtResource("1_8afob")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=160883938]
