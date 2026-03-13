@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://d1xjc07ij4h5t" path="res://assets/sprites/crowd/crowd-spritesheet.png" id="4_gvhdg"]
 [ext_resource type="Script" uid="uid://4qpi3bxm2jns" path="res://scenes/pig/pig_container.gd" id="4_j01ti"]
 [ext_resource type="Script" uid="uid://ch0k4ub46bf0t" path="res://scenes/wall/death_wall.gd" id="7_im6c2"]
+[ext_resource type="Script" uid="uid://wbwoalu2c1ri" path="res://scenes/gui/gui.gd" id="10_2onrl"]
+[ext_resource type="Texture2D" uid="uid://dgsx0amrjil70" path="res://assets/icons/has.png" id="10_fedei"]
+[ext_resource type="FontFile" uid="uid://cmk5vaw2t2qwd" path="res://assets/fonts/grafitik_riot.otf" id="11_f3jbb"]
 
 [sub_resource type="Resource" id="Resource_j01ti"]
 script = ExtResource("2_im6c2")
@@ -53,6 +56,16 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im6c2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_10emt"]
+line_spacing = 5.0
+font = ExtResource("11_f3jbb")
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 0, 0, 0.5411765)
+shadow_offset = Vector2(2, 2)
+
 [node name="Breakout" type="Node2D" unique_id=1225362817]
 script = ExtResource("1_j01ti")
 level_data = SubResource("Resource_j01ti")
@@ -82,12 +95,69 @@ position = Vector2(482, 566)
 script = ExtResource("4_j01ti")
 
 [node name="DeathZone" type="Area2D" parent="." unique_id=1695993574]
-position = Vector2(576, 658)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1511544932]
 shape = SubResource("RectangleShape2D_im6c2")
 script = ExtResource("7_im6c2")
 side = 3
 
+[node name="GUI" type="Control" parent="." unique_id=227872746]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 722.0
+script = ExtResource("10_2onrl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="GUI" unique_id=380608928]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.019000001
+anchor_right = 0.135
+anchor_bottom = 0.09
+offset_left = -0.3600006
+offset_top = 0.28199863
+offset_right = 0.19999695
+offset_bottom = -27.980003
+text = "Vidas:"
+label_settings = SubResource("LabelSettings_10emt")
+
+[node name="PanelContainer" type="AspectRatioContainer" parent="GUI" unique_id=1989008339]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.086
+anchor_right = 0.16800001
+anchor_bottom = 0.17500001
+offset_left = -0.3600006
+offset_top = -0.09200287
+offset_right = -0.040008545
+offset_bottom = -0.3500061
+alignment_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PanelContainer" unique_id=1658904644]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Life1" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer" unique_id=2087346618]
+layout_mode = 2
+texture = ExtResource("10_fedei")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Life2" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer" unique_id=1244785419]
+layout_mode = 2
+texture = ExtResource("10_fedei")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Life3" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer" unique_id=1534869882]
+layout_mode = 2
+texture = ExtResource("10_fedei")
+expand_mode = 2
+stretch_mode = 4
+
+[connection signal="changed_life" from="Player" to="." method="_on_player_changed_life"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
-[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
+[connection signal="body_exited" from="DeathZone" to="." method="_on_death_zone_body_exited"]

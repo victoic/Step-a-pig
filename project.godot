@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Step-a-Pig"
 config/description="A Breakout game about socialism	"
-config/version="0.1.0"
+config/version="0.4.0"
 config/tags=PackedStringArray("20games", "breakout", "communism", "socialism")
 run/main_scene="uid://cgxsddpyf21pn"
 config/features=PackedStringArray("4.6", "Forward Plus")

@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal game_over
+signal changed_life(lives: int)
 
 @onready var polygon: Polygon2D = $Polygon2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -8,6 +9,7 @@ signal game_over
 @export var lives: int = 3:
 	set(value):
 		lives = value
+		changed_life.emit(lives)
 		if lives <= 0:
 			game_over.emit()
 @export var speed: float = 480
@@ -54,4 +56,8 @@ func _physics_process(delta: float) -> void:
 			position.x -= speed * delta
 		elif Input.is_action_pressed("right"):
 			position.x += speed * delta
-		position.x = clampf(position.x, half_bar_size.x, get_viewport_rect().size.x - half_bar_size.x)
+		position.x = clampf(
+			position.x, 
+			half_bar_size.x + Breakout.walls_padding, 
+			get_viewport_rect().size.x - half_bar_size.x - Breakout.walls_padding
+		)

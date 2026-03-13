@@ -46,6 +46,9 @@ func _physics_process(delta: float) -> void:
 					elif collider_shape.side == Wall.LEFT_SIDE or collider_shape.side == Wall.RIGHT_SIDE:
 						angle.x = -angle.x
 			elif is_instance_of(collider, Pig):
-				# detect which side to change direction
 				collider.take_hit(damage)
-				angle.y = -angle.y
+				var normal: Vector2 = collision.get_normal()
+				if normal.x != 0:
+					angle.x = -angle.x
+				else:
+					angle.y = -angle.y

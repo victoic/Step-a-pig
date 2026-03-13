@@ -26,4 +26,4 @@ side = 1
 [node name="UpWall" type="CollisionShape2D" parent="." unique_id=1249223293]
 shape = SubResource("SegmentShape2D_mrr4g")
 script = ExtResource("1_vn246")
-side = 3
+side = 2

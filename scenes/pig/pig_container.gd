@@ -5,7 +5,7 @@ class_name PigContainer extends Node2D
 @export var padding: float = 1
 
 func setup(scenes: Array[Array]) -> void:
-	var starting_y: float = 100
+	var starting_y: float = 12
 	for row: Array in scenes:
 		var starting_x: float = (get_viewport_rect().size.x - 2 * Breakout.walls_padding - 38 * len(row) - padding * (len(row) - 1)) / 2
 		for pig_scene: PackedScene in row:

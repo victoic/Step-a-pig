@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cbg8qdon7enmp"]
 
 [ext_resource type="Script" uid="uid://6xe3gbid7nij" path="res://scenes/ball/ball.gd" id="1_oqv3d"]
+[ext_resource type="Shader" uid="uid://bj3xhhsmeqmkd" path="res://resources/shaders/ball.gdshader" id="2_nv6q1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stoaj"]
+shader = ExtResource("2_nv6q1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txkdx"]
 
@@ -9,6 +13,8 @@ gravity_scale = 0.0
 script = ExtResource("1_oqv3d")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=213748735]
+material = SubResource("ShaderMaterial_stoaj")
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 0, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703325892]
 shape = SubResource("RectangleShape2D_txkdx")
