@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://da36t2lrvdjy4"]
+
+[ext_resource type="Script" uid="uid://cjsb84tgu2sjj" path="res://scenes/pig/none.gd" id="1_x1mg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wskoe"]
+size = Vector2(38, 24)
+
+[node name="Pig" type="RigidBody2D" unique_id=1290696073]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_x1mg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1175697429]
+texture_filter = 3
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=683076505]
+shape = SubResource("RectangleShape2D_wskoe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1961119914]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

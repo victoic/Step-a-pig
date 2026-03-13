@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bexvldj328ln1"]
+
+[ext_resource type="Script" uid="uid://cw0lnylame4ap" path="res://scenes/power_ups/explosion_ball/explosion_ball_power_up.gd" id="1_m0dbw"]
+[ext_resource type="Texture2D" uid="uid://bh50edb4c4ym" path="res://assets/sprites/explosion/explosion-spritesheet.png" id="2_m0dbw"]
+
+[sub_resource type="Animation" id="Animation_wvwal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ykikv"]
+resource_name = "explosion"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whru8"]
+_data = {
+&"RESET": SubResource("Animation_wvwal"),
+&"explosion": SubResource("Animation_ykikv")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r45iw"]
+radius = 50.0
+
+[node name="PowerUp" type="Node2D" unique_id=1872953464]
+script = ExtResource("1_m0dbw")
+action = "click"
+is_player = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=234022397]
+visible = false
+texture = ExtResource("2_m0dbw")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1484609923]
+libraries/ = SubResource("AnimationLibrary_whru8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1276648683]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1800702427]
+shape = SubResource("CircleShape2D_r45iw")
+debug_color = Color(0.9969805, 0, 0.18511602, 0.41960785)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

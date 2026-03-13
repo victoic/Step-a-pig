@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b6c81a1vs88rg"]
+
+[ext_resource type="Script" uid="uid://dw7sl55te2w65" path="res://scenes/power_ups/teleport_player/teleport_player_power_up.gd" id="1_g4o5i"]
+
+[node name="PowerUp" type="Node2D" unique_id=1872953464]
+script = ExtResource("1_g4o5i")
+
+[node name="Timer" type="Timer" parent="." unique_id=515896985]
+wait_time = 0.3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

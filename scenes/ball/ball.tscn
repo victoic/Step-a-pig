@@ -8,7 +8,9 @@ shader = ExtResource("2_nv6q1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txkdx"]
 
-[node name="Ball" type="RigidBody2D" unique_id=415933655]
+[node name="Ball" type="RigidBody2D" unique_id=415933655 groups=["ball"]]
+collision_layer = 4
+collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_oqv3d")
 

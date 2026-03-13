@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://cwj8yl8ouyltn"]
 
 [ext_resource type="Script" uid="uid://de2hr0axigb73" path="res://scenes/pig/pig.gd" id="1_ics1w"]
-[ext_resource type="Texture2D" uid="uid://bj8wkwkc583r5" path="res://assets/sprites/pig/pig-spreadsheet.png" id="2_ics1w"]
+[ext_resource type="Texture2D" uid="uid://bj8wkwkc583r5" path="res://assets/sprites/pig/pig-spritesheet.png" id="2_ics1w"]
+[ext_resource type="AudioStream" uid="uid://dgdacjs7c7y52" path="res://assets/audio/sfx/hit/174614__yottasounds__pig004.wav" id="3_fo5f1"]
+[ext_resource type="AudioStream" uid="uid://dwr46ue6c8bk6" path="res://assets/audio/sfx/hit/380497__magedu__dog_toy_latex_pig_slow.wav" id="4_hvqkf"]
+[ext_resource type="AudioStream" uid="uid://bviu1dckfqq42" path="res://assets/audio/sfx/hit/380500__magedu__dog_toy_latex_pig.wav" id="5_w5mvw"]
+[ext_resource type="AudioStream" uid="uid://crbjkulu3metg" path="res://assets/audio/sfx/hit/467571__samuelgremaud__pigs-2-small.wav" id="6_vsxb1"]
+[ext_resource type="AudioStream" uid="uid://dvruhuavsokrc" path="res://assets/audio/sfx/hit/529248__muteloops__pig-burp-sound.mp3" id="7_w3vml"]
+[ext_resource type="AudioStream" uid="uid://6a5yjmiu7mq7" path="res://assets/audio/sfx/hit/561576__mattruthsound__dog-toy-rubber-pig-squeak-oink-grunt-fast-single-grunt_96khz_mono_zoomh4n_nt5.wav" id="8_51n3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wskoe"]
 size = Vector2(38, 24)
@@ -96,14 +102,24 @@ _data = {
 &"walk": SubResource("Animation_2o6tx")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_51qrm"]
+streams_count = 6
+stream_0/stream = ExtResource("3_fo5f1")
+stream_1/stream = ExtResource("4_hvqkf")
+stream_2/stream = ExtResource("5_w5mvw")
+stream_3/stream = ExtResource("6_vsxb1")
+stream_4/stream = ExtResource("7_w3vml")
+stream_5/stream = ExtResource("8_51n3l")
+
 [node name="Pig" type="RigidBody2D" unique_id=1290696073]
 scale = Vector2(0.5, 0.5)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_ics1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1175697429]
+texture_filter = 3
 texture = ExtResource("2_ics1w")
 hframes = 4
 
@@ -113,6 +129,9 @@ shape = SubResource("RectangleShape2D_wskoe")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701307540]
 libraries/ = SubResource("AnimationLibrary_j01ti")
 autoplay = &"walk"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=93692658]
+stream = SubResource("AudioStreamRandomizer_51qrm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

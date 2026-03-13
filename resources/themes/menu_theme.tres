@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://clwsl16jec2o1"]
+
+[ext_resource type="FontFile" uid="uid://ccdiaokhn6y4r" path="res://assets/fonts/Octin Spraypaint A Rg.otf" id="1_aq7pu"]
+[ext_resource type="StyleBox" uid="uid://ddpqm4w3oex0" path="res://resources/styles/menu_button_hover.tres" id="2_0jyfp"]
+[ext_resource type="StyleBox" uid="uid://bwfcbn58uvc8r" path="res://resources/styles/menu_button.tres" id="3_wgj3i"]
+[ext_resource type="StyleBox" uid="uid://b4twlkhe87vau" path="res://resources/styles/menu_button_pressed.tres" id="4_7utmw"]
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_aq7pu")
+Button/styles/hover = ExtResource("2_0jyfp")
+Button/styles/normal = ExtResource("3_wgj3i")
+Button/styles/pressed = ExtResource("4_7utmw")

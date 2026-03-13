@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://be72sef68mjy6"]
+
+[ext_resource type="Theme" uid="uid://clwsl16jec2o1" path="res://resources/themes/menu_theme.tres" id="1_037ec"]
+[ext_resource type="Script" uid="uid://dmujtxuvbvsad" path="res://scenes/menu/menu.gd" id="1_e0arn"]
+[ext_resource type="Texture2D" uid="uid://dwysyx6mpdpye" path="res://assets/backgrounds/bg-menu.png" id="2_037ec"]
+[ext_resource type="FontFile" uid="uid://ccdiaokhn6y4r" path="res://assets/fonts/Octin Spraypaint A Rg.otf" id="3_y1o0p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8yej"]
+line_spacing = 5.0
+font = ExtResource("3_y1o0p")
+font_size = 100
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 0, 0, 0.5411765)
+shadow_offset = Vector2(2, 2)
+
+[node name="Menu" type="Control" unique_id=1061494638]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_037ec")
+script = ExtResource("1_e0arn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=760909062]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_037ec")
+
+[node name="Label" type="Label" parent="." unique_id=1259857141]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 238.0
+grow_horizontal = 2
+text = "Step-a-Pig"
+label_settings = SubResource("LabelSettings_r8yej")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=720425237]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=263026658]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1018960451]
+layout_mode = 2
+theme = ExtResource("1_037ec")
+text = "Novo Jogo"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1216605218]
+layout_mode = 2
+text = "Configurações"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=59912582]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

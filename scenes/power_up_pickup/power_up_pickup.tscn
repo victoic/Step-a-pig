@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://jjkgl57crjj2"]
+
+[ext_resource type="Script" uid="uid://cnm1k64521ymh" path="res://scenes/power_up_pickup/power_up_pickup.gd" id="1_s4g4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4g4g"]
+
+[node name="PowerUpPickup" type="RigidBody2D" unique_id=1093639032]
+collision_layer = 4
+gravity_scale = 0.0
+script = ExtResource("1_s4g4g")
+speed = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1201103501]
+shape = SubResource("RectangleShape2D_s4g4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=777008206]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

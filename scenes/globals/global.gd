@@ -1,3 +1,3 @@
 class_name Global extends Node
 
-var is_game_over: bool = false
+var cur_level: String = "res://resources/levels/level_1.tres"

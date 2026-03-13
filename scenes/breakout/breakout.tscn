@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://n8vy6ecuh5mt" path="res://scenes/breakout/breakout.gd" id="1_j01ti"]
 [ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
-[ext_resource type="Script" uid="uid://dm4wcgxbydldb" path="res://resources/levels/level_data.gd" id="2_im6c2"]
 [ext_resource type="PackedScene" uid="uid://cbg8qdon7enmp" path="res://scenes/ball/ball.tscn" id="2_naopy"]
+[ext_resource type="Resource" uid="uid://db11t4ehpxgu1" path="res://resources/levels/level_3.tres" id="2_spedm"]
 [ext_resource type="Texture2D" uid="uid://cxsmrav3brhfs" path="res://assets/backgrounds/bg-level3.png" id="3_0glx3"]
 [ext_resource type="PackedScene" uid="uid://b7v5lcg7mch5a" path="res://scenes/wall/bounce_walls.tscn" id="3_mrr4g"]
 [ext_resource type="Texture2D" uid="uid://d1xjc07ij4h5t" path="res://assets/sprites/crowd/crowd-spritesheet.png" id="4_gvhdg"]
@@ -11,11 +11,9 @@
 [ext_resource type="Script" uid="uid://ch0k4ub46bf0t" path="res://scenes/wall/death_wall.gd" id="7_im6c2"]
 [ext_resource type="Script" uid="uid://wbwoalu2c1ri" path="res://scenes/gui/gui.gd" id="10_2onrl"]
 [ext_resource type="Texture2D" uid="uid://dgsx0amrjil70" path="res://assets/icons/has.png" id="10_fedei"]
-[ext_resource type="FontFile" uid="uid://cmk5vaw2t2qwd" path="res://assets/fonts/grafitik_riot.otf" id="11_f3jbb"]
-
-[sub_resource type="Resource" id="Resource_j01ti"]
-script = ExtResource("2_im6c2")
-metadata/_custom_type_script = "uid://dm4wcgxbydldb"
+[ext_resource type="LabelSettings" uid="uid://200fymwwpdhi" path="res://resources/label_settings/in_game_label_settings.tres" id="11_f3jbb"]
+[ext_resource type="FontFile" uid="uid://ccdiaokhn6y4r" path="res://assets/fonts/Octin Spraypaint A Rg.otf" id="13_spedm"]
+[ext_resource type="Theme" uid="uid://clwsl16jec2o1" path="res://resources/themes/menu_theme.tres" id="14_pg20d"]
 
 [sub_resource type="Animation" id="Animation_gvhdg"]
 length = 0.001
@@ -56,26 +54,86 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im6c2"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_10emt"]
+[sub_resource type="LabelSettings" id="LabelSettings_wkjwr"]
 line_spacing = 5.0
-font = ExtResource("11_f3jbb")
-font_size = 48
+font = ExtResource("13_spedm")
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(1, 0, 0, 0.5411765)
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="Animation" id="Animation_f3jbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI/Phrase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUI/Phrase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_10emt"]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI/Phrase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUI/Phrase:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spedm"]
+_data = {
+&"RESET": SubResource("Animation_f3jbb"),
+&"start": SubResource("Animation_10emt")
+}
+
 [node name="Breakout" type="Node2D" unique_id=1225362817]
 script = ExtResource("1_j01ti")
-level_data = SubResource("Resource_j01ti")
+level_data = ExtResource("2_spedm")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1273740788]
 texture = ExtResource("3_0glx3")
 centered = false
 
 [node name="Crowd" type="Sprite2D" parent="." unique_id=1086444698]
-position = Vector2(631, 689)
+position = Vector2(631, 687)
 texture = ExtResource("4_gvhdg")
 vframes = 3
 
@@ -95,6 +153,8 @@ position = Vector2(482, 566)
 script = ExtResource("4_j01ti")
 
 [node name="DeathZone" type="Area2D" parent="." unique_id=1695993574]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1511544932]
 shape = SubResource("RectangleShape2D_im6c2")
@@ -121,7 +181,7 @@ offset_top = 0.28199863
 offset_right = 0.19999695
 offset_bottom = -27.980003
 text = "Vidas:"
-label_settings = SubResource("LabelSettings_10emt")
+label_settings = ExtResource("11_f3jbb")
 
 [node name="PanelContainer" type="AspectRatioContainer" parent="GUI" unique_id=1989008339]
 layout_mode = 1
@@ -158,6 +218,56 @@ texture = ExtResource("10_fedei")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="Phrase" type="Label" parent="GUI" unique_id=1270723187]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("11_f3jbb")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VictoryPanel" type="Panel" parent="GUI" unique_id=1906999059]
+visible = false
+layout_mode = 0
+offset_left = 565.0
+offset_top = 307.0
+offset_right = 765.0
+offset_bottom = 457.0
+
+[node name="Label" type="Label" parent="GUI/VictoryPanel" unique_id=1252258599]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+text = "A luta continua!"
+label_settings = SubResource("LabelSettings_wkjwr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GUI/VictoryPanel" unique_id=1258045553]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.56
+anchor_right = 1.0
+anchor_bottom = 0.89300007
+offset_left = 56.0
+offset_top = 0.9599991
+offset_right = -51.0
+offset_bottom = -14.294014
+theme = ExtResource("14_pg20d")
+text = "Lutar!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI" unique_id=921002061]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_spedm")
+
 [connection signal="changed_life" from="Player" to="." method="_on_player_changed_life"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="body_exited" from="DeathZone" to="." method="_on_death_zone_body_exited"]
+[connection signal="pressed" from="GUI/VictoryPanel/Button" to="." method="_on_button_pressed"]

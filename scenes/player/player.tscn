@@ -9,7 +9,7 @@ shader = ExtResource("1_gmlin")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrrli"]
 
-[node name="Player" type="CharacterBody2D" unique_id=525746072]
+[node name="Player" type="CharacterBody2D" unique_id=525746072 groups=["player"]]
 collision_mask = 0
 script = ExtResource("1_8afob")
 
