@@ -33,7 +33,6 @@ func debug() -> void:
 	GameData.cur_level = "res://resources/levels/ending.tres"
 
 func _ready() -> void:
-	debug()
 	is_game_over = false
 	level_data = load(GameData.cur_level)
 	set_music()
