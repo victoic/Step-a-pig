@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_hxlwh")
+map = "1"
 map_file = "res://assets/text/levels/ending.txt"
 bg = "res://assets/backgrounds/bg-ending.png"
 life_icon = "res://assets/icons/has.png"

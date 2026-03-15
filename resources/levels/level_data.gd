@@ -10,7 +10,8 @@ const PIG_DICTIONARY: Dictionary[String, String] = {
 	'5': "res://scenes/pig/swine.tscn",
 	'6': "res://scenes/pig/snipig.tscn",
 }
-@export var map_file: String = "res://assets/text/levels/level01.txt"
+
+@export var map: String = '000000000000000000000000|------------------------|000000000000000000000000|------------------------|111111111111111111111111'
 @export var bg: String = "res://assets/backgrounds/bg-level1.png"
 @export var life_icon: String = "res://assets/icons/plebs.png"
 @export var next_level: String = "res://resources/levels/level_2.tres"
@@ -24,9 +25,7 @@ const PIG_DICTIONARY: Dictionary[String, String] = {
 func load_map() -> Array[Array]:
 	var scenes: Array[Array] = []
 	if FileAccess.file_exists(map_file):
-		var file: FileAccess = FileAccess.open(map_file, FileAccess.READ)
-		var map: PackedStringArray = file.get_as_text().split('\n')
-		for row: String in map:
+		for row: String in map.split('|'):
 			scenes.append([])
 			for char: String in row:
 				if char in PIG_DICTIONARY:
