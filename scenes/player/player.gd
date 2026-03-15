@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 signal game_over
 signal changed_life(lives: int)
+signal spawn_on_game(node: Node2D)
 
 @onready var polygon: Polygon2D = $Polygon2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -15,6 +16,7 @@ signal changed_life(lives: int)
 @export var speed: float = 480
 
 @onready var blank_power_up: PackedScene = load("res://scenes/power_ups/blank/blank_power_up.tscn")
+
 @export var power_up: PowerUp
 
 var half_bar_size: Vector2 = Vector2.ZERO
@@ -44,8 +46,8 @@ func get_hit_angle(ball: Ball) -> Vector2:
 	
 	var pos_diff: float = ball.position.x - position.x
 	var ratio_x: float = pos_diff / ((bar_size.x + power_up.size_mod.x) / 2)
-	var rotation_degrees: float = ratio_x * 75
-	var d: Vector2 = deg_to_vec(rotation_degrees)
+	var rotation_deg: float = ratio_x * 75
+	var d: Vector2 = deg_to_vec(rotation_deg)
 	
 	var r: Vector2 = d - 2 * (d.dot(n)) * n
 	return r
@@ -59,6 +61,13 @@ func set_power_up(new_power_up: PowerUp):
 	add_child(power_up)
 	set_sizes()
 
+func get_moved_position(diff: float):
+	return clampf(
+		position.x + diff, 
+		half_bar_size.x + Breakout.walls_padding, 
+		get_viewport_rect().size.x - half_bar_size.x - Breakout.walls_padding
+	)
+
 func _ready() -> void:
 	set_sizes()
 	position.x = get_viewport_rect().size.x / 2
@@ -67,7 +76,7 @@ func _ready() -> void:
 	add_child(power_up)
 
 func _physics_process(delta: float) -> void:
-	if not Breakout.is_game_over:
+	if not Breakout.is_game_over and not Breakout.player_paused:
 		if not power_up._on_action_just_pressed(self, delta):
 			if Input.is_action_pressed("left"):
 				position.x -= (speed + power_up.speed_mod.x) * delta

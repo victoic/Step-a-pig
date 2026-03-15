@@ -2,18 +2,23 @@
 
 [ext_resource type="Script" uid="uid://n8vy6ecuh5mt" path="res://scenes/breakout/breakout.gd" id="1_j01ti"]
 [ext_resource type="PackedScene" uid="uid://doi7s1cvhd146" path="res://scenes/player/player.tscn" id="1_rrrli"]
+[ext_resource type="Resource" uid="uid://fscwsd07okqu" path="res://resources/levels/ending.tres" id="2_4oeew"]
 [ext_resource type="PackedScene" uid="uid://cbg8qdon7enmp" path="res://scenes/ball/ball.tscn" id="2_naopy"]
-[ext_resource type="Resource" uid="uid://db11t4ehpxgu1" path="res://resources/levels/level_3.tres" id="2_spedm"]
 [ext_resource type="Texture2D" uid="uid://cxsmrav3brhfs" path="res://assets/backgrounds/bg-level3.png" id="3_0glx3"]
 [ext_resource type="PackedScene" uid="uid://b7v5lcg7mch5a" path="res://scenes/wall/bounce_walls.tscn" id="3_mrr4g"]
 [ext_resource type="Texture2D" uid="uid://d1xjc07ij4h5t" path="res://assets/sprites/crowd/crowd-spritesheet.png" id="4_gvhdg"]
 [ext_resource type="Script" uid="uid://4qpi3bxm2jns" path="res://scenes/pig/pig_container.gd" id="4_j01ti"]
+[ext_resource type="Animation" uid="uid://b8kdbfgmfy5ni" path="res://resources/animations/crowd.res" id="5_4oeew"]
 [ext_resource type="Script" uid="uid://ch0k4ub46bf0t" path="res://scenes/wall/death_wall.gd" id="7_im6c2"]
 [ext_resource type="Script" uid="uid://wbwoalu2c1ri" path="res://scenes/gui/gui.gd" id="10_2onrl"]
 [ext_resource type="Texture2D" uid="uid://dgsx0amrjil70" path="res://assets/icons/has.png" id="10_fedei"]
 [ext_resource type="LabelSettings" uid="uid://200fymwwpdhi" path="res://resources/label_settings/in_game_label_settings.tres" id="11_f3jbb"]
 [ext_resource type="FontFile" uid="uid://ccdiaokhn6y4r" path="res://assets/fonts/Octin Spraypaint A Rg.otf" id="13_spedm"]
 [ext_resource type="Theme" uid="uid://clwsl16jec2o1" path="res://resources/themes/menu_theme.tres" id="14_pg20d"]
+[ext_resource type="Animation" uid="uid://cvgsbgaq1i0r1" path="res://resources/animations/start.res" id="15_75ff1"]
+[ext_resource type="AudioStream" uid="uid://deyjgfdsqrb1r" path="res://assets/audio/music/170255__dublie__trumpet.wav" id="15_pg20d"]
+[ext_resource type="AudioStream" uid="uid://c3u81o56xfn3s" path="res://assets/audio/music/363469__deleted_user_6109353__roman-marching-music-loop-with-dark-string.wav" id="16_hyn72"]
+[ext_resource type="AudioStream" uid="uid://bi1nynl5ssjy" path="res://assets/audio/music/428157__setuniman__charade-1q62b.wav" id="17_75ff1"]
 
 [sub_resource type="Animation" id="Animation_gvhdg"]
 length = 0.001
@@ -30,33 +35,28 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_fedei"]
-resource_name = "crowd"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2onrl"]
 _data = {
 &"RESET": SubResource("Animation_gvhdg"),
-&"crowd": SubResource("Animation_fedei")
+&"crowd": ExtResource("5_4oeew")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im6c2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4oeew"]
+line_spacing = 5.0
+font = ExtResource("13_spedm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 0, 0, 0.5411765)
+shadow_offset = Vector2(2, 2)
+
 [sub_resource type="LabelSettings" id="LabelSettings_wkjwr"]
 line_spacing = 5.0
 font = ExtResource("13_spedm")
+font_size = 24
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
@@ -89,44 +89,40 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_10emt"]
-resource_name = "start"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GUI/Phrase:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GUI/Phrase:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GUI/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_spedm"]
 _data = {
 &"RESET": SubResource("Animation_f3jbb"),
-&"start": SubResource("Animation_10emt")
+&"start": ExtResource("15_75ff1")
 }
 
-[node name="Breakout" type="Node2D" unique_id=1225362817]
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_spedm"]
+stream_count = 1
+stream_0 = ExtResource("16_hyn72")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_4oeew"]
+stream_count = 1
+stream_0 = ExtResource("15_pg20d")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_y6sk4"]
+stream_count = 1
+stream_0 = ExtResource("17_75ff1")
+
+[node name="Breakout" type="Node2D" unique_id=1225362817 groups=["breakout"]]
 script = ExtResource("1_j01ti")
-level_data = ExtResource("2_spedm")
+level_data = ExtResource("2_4oeew")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1273740788]
 texture = ExtResource("3_0glx3")
@@ -147,6 +143,8 @@ position = Vector2(492, 640)
 [node name="Ball" parent="." unique_id=415933655 instance=ExtResource("2_naopy")]
 position = Vector2(482, 566)
 
+[node name="OneShotBalls" type="Node2D" parent="." unique_id=1104064246]
+
 [node name="BounceWalls" parent="." unique_id=1731200681 instance=ExtResource("3_mrr4g")]
 
 [node name="PigContainer" type="Node2D" parent="." unique_id=1209201113]
@@ -166,6 +164,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 722.0
+theme = ExtResource("14_pg20d")
 script = ExtResource("10_2onrl")
 metadata/_edit_use_anchors_ = true
 
@@ -218,6 +217,15 @@ texture = ExtResource("10_fedei")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="ColorRect" type="ColorRect" parent="GUI" unique_id=1164587028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Phrase" type="Label" parent="GUI" unique_id=1270723187]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 1
@@ -233,41 +241,117 @@ autowrap_mode = 2
 
 [node name="VictoryPanel" type="Panel" parent="GUI" unique_id=1906999059]
 visible = false
-layout_mode = 0
-offset_left = 565.0
-offset_top = 307.0
-offset_right = 765.0
-offset_bottom = 457.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.441
+anchor_top = 0.404
+anchor_right = 0.67600006
+anchor_bottom = 0.633
+offset_left = 0.5199585
+offset_top = 0.3119812
+offset_right = -0.28009033
+offset_bottom = -0.026000977
 
 [node name="Label" type="Label" parent="GUI/VictoryPanel" unique_id=1252258599]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 54.0
+anchor_bottom = 0.32700002
+offset_bottom = 0.04499817
 grow_horizontal = 2
-text = "A luta continua!"
+text = "E assim a luta continua!"
+label_settings = SubResource("LabelSettings_4oeew")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLevelButton" type="Button" parent="GUI/VictoryPanel" unique_id=1258045553]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.56
+anchor_right = 0.83000004
+anchor_bottom = 0.86300004
+offset_left = -0.10000229
+offset_top = 0.9599991
+offset_right = -1.5258789e-05
+offset_bottom = -9.344009
+theme = ExtResource("14_pg20d")
+text = "Lutar!"
+
+[node name="LossPanel" type="Panel" parent="GUI" unique_id=290647448]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.441
+anchor_top = 0.404
+anchor_right = 0.67600006
+anchor_bottom = 0.633
+offset_left = 0.5199585
+offset_top = 0.3119812
+offset_right = -0.28009033
+offset_bottom = -0.026000977
+
+[node name="Label" type="Label" parent="GUI/LossPanel" unique_id=355347955]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.497
+offset_top = 8.0
+offset_bottom = -0.005004883
+grow_horizontal = 2
+text = "Mesmo em derrota, os oprimidos resistem!"
 label_settings = SubResource("LabelSettings_wkjwr")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="Button" type="Button" parent="GUI/VictoryPanel" unique_id=1258045553]
+[node name="RestartButton" type="Button" parent="GUI/LossPanel" unique_id=1847608369]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.143
 anchor_top = 0.56
-anchor_right = 1.0
-anchor_bottom = 0.89300007
-offset_left = 56.0
-offset_top = 0.9599991
-offset_right = -51.0
-offset_bottom = -14.294014
+anchor_right = 0.47700003
+anchor_bottom = 0.87500006
+offset_left = 0.099998474
+offset_top = -1.9999924
+offset_right = -0.1000061
+offset_bottom = 0.019989014
 theme = ExtResource("14_pg20d")
 text = "Lutar!"
+
+[node name="MenuButton" type="Button" parent="GUI/LossPanel" unique_id=2001397965]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51000005
+anchor_top = 0.56
+anchor_right = 0.84300005
+anchor_bottom = 0.88100004
+offset_left = -1.5258789e-05
+offset_top = -0.9999924
+offset_right = 0.099990845
+offset_bottom = 0.02999878
+theme = ExtResource("14_pg20d")
+text = "Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI" unique_id=921002061]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_spedm")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1994633353]
+stream = SubResource("AudioStreamPlaylist_spedm")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=732638203]
+stream = SubResource("AudioStreamPlaylist_4oeew")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="." unique_id=304338306]
+stream = SubResource("AudioStreamPlaylist_y6sk4")
+
 [connection signal="changed_life" from="Player" to="." method="_on_player_changed_life"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="body_exited" from="DeathZone" to="." method="_on_death_zone_body_exited"]
-[connection signal="pressed" from="GUI/VictoryPanel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GUI/VictoryPanel/NextLevelButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GUI/LossPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GUI/LossPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="animation_finished" from="GUI/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

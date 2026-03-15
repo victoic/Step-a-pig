@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Step-a-Pig"
 config/description="A Breakout game about socialism	"
-config/version="0.6.0"
+config/version="1.0.0"
 config/tags=PackedStringArray("20games", "breakout", "communism", "socialism")
 run/main_scene="uid://be72sef68mjy6"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*uid://c1y2xfkd6amra"
+Stats="*uid://canhql21k6ux7"
 
 [display]
 
@@ -36,6 +37,7 @@ version_control/autoload_on_startup=true
 
 ball=""
 player=""
+breakout="The game node"
 
 [input]
 

@@ -10,6 +10,7 @@ class_name Ball extends RigidBody2D
 	set(value):
 		size = value
 		set_polygon()
+@export var is_one_shot: bool = false
 
 @onready var blank_power_up: PackedScene = load("res://scenes/power_ups/blank/blank_power_up.tscn")
 @export var power_up: PowerUp
@@ -45,7 +46,7 @@ func _ready() -> void:
 	add_child(power_up)
 
 func _physics_process(delta: float) -> void:
-	if not Breakout.is_game_over:
+	if not Breakout.is_game_over and not Breakout.ball_paused:
 		if not power_up._on_action_just_pressed(self, delta):
 			var movement: Vector2 = (speed + power_up.speed_mod) * angle * delta
 			var collision: KinematicCollision2D = move_and_collide(movement)

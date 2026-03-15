@@ -5,6 +5,14 @@
 [ext_resource type="StyleBox" uid="uid://bwfcbn58uvc8r" path="res://resources/styles/menu_button.tres" id="3_wgj3i"]
 [ext_resource type="StyleBox" uid="uid://b4twlkhe87vau" path="res://resources/styles/menu_button_pressed.tres" id="4_7utmw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq7pu"]
+bg_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -14,3 +22,4 @@ Button/fonts/font = ExtResource("1_aq7pu")
 Button/styles/hover = ExtResource("2_0jyfp")
 Button/styles/normal = ExtResource("3_wgj3i")
 Button/styles/pressed = ExtResource("4_7utmw")
+Panel/styles/panel = SubResource("StyleBoxFlat_aq7pu")

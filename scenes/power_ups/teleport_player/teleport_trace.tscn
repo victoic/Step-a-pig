@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://ctyqmpjfcceky"]
+
+[ext_resource type="Shader" uid="uid://qfnhrta0kxru" path="res://resources/shaders/teleport_player_power_up.gdshader" id="1_cmhbq"]
+[ext_resource type="Script" uid="uid://don6ewkcqw8np" path="res://scenes/power_ups/teleport_player/teleport_trace.gd" id="1_yb64y"]
+[ext_resource type="Script" uid="uid://keqo2r1s8dx5" path="res://scenes/wall/wall.gd" id="2_yb64y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k61v4"]
+shader = ExtResource("1_cmhbq")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yb64y"]
+a = Vector2(0, 5)
+b = Vector2(400, 5)
+
+[sub_resource type="Animation" id="Animation_x7l4h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeleportTrace/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportTrace/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c08yq"]
+resource_name = "teleport"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeleportTrace/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportTrace/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeleportTrace")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4w76"]
+_data = {
+&"RESET": SubResource("Animation_x7l4h"),
+&"teleport": SubResource("Animation_c08yq")
+}
+
+[node name="TeleportTrace" type="StaticBody2D" unique_id=919106803]
+script = ExtResource("1_yb64y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=609039751]
+visible = false
+material = SubResource("ShaderMaterial_k61v4")
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -5.0
+offset_right = 400.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1468492907]
+shape = SubResource("SegmentShape2D_yb64y")
+disabled = true
+debug_color = Color(2.8397144e-06, 0.64318687, 0.3101297, 0.41960785)
+script = ExtResource("2_yb64y")
+side = 2
+is_border = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1211553479]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_x4w76")

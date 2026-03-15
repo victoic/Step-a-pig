@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b6u3rvhafns5g"]
+
+[ext_resource type="Script" uid="uid://de2hr0axigb73" path="res://scenes/pig/pig.gd" id="1_piccq"]
+[ext_resource type="Texture2D" uid="uid://cpcqt1g0cymad" path="res://assets/sprites/pig/snipig-spritesheet.png" id="2_piccq"]
+[ext_resource type="AudioStream" uid="uid://dgdacjs7c7y52" path="res://assets/audio/sfx/hit/174614__yottasounds__pig004.wav" id="3_07g3d"]
+[ext_resource type="AnimationLibrary" uid="uid://vsk7im30by4e" path="res://resources/animations/pig.res" id="3_gq04r"]
+[ext_resource type="AudioStream" uid="uid://dwr46ue6c8bk6" path="res://assets/audio/sfx/hit/380497__magedu__dog_toy_latex_pig_slow.wav" id="4_0vwfk"]
+[ext_resource type="AudioStream" uid="uid://bviu1dckfqq42" path="res://assets/audio/sfx/hit/380500__magedu__dog_toy_latex_pig.wav" id="5_210xc"]
+[ext_resource type="AudioStream" uid="uid://crbjkulu3metg" path="res://assets/audio/sfx/hit/467571__samuelgremaud__pigs-2-small.wav" id="6_y8vw2"]
+[ext_resource type="AudioStream" uid="uid://dvruhuavsokrc" path="res://assets/audio/sfx/hit/529248__muteloops__pig-burp-sound.mp3" id="7_5ufid"]
+[ext_resource type="AudioStream" uid="uid://6a5yjmiu7mq7" path="res://assets/audio/sfx/hit/561576__mattruthsound__dog-toy-rubber-pig-squeak-oink-grunt-fast-single-grunt_96khz_mono_zoomh4n_nt5.wav" id="8_vtx1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wskoe"]
+size = Vector2(38, 24)
+
+[sub_resource type="Animation" id="Animation_mrr4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j01ti"]
+_data = {
+&"RESET": SubResource("Animation_mrr4g")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_51qrm"]
+streams_count = 6
+stream_0/stream = ExtResource("3_07g3d")
+stream_1/stream = ExtResource("4_0vwfk")
+stream_2/stream = ExtResource("5_210xc")
+stream_3/stream = ExtResource("6_y8vw2")
+stream_4/stream = ExtResource("7_5ufid")
+stream_5/stream = ExtResource("8_vtx1p")
+
+[node name="Pig" type="RigidBody2D" unique_id=1290696073]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_piccq")
+power_up_chance = 0.3
+bullet_chance = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1175697429]
+texture_filter = 3
+texture = ExtResource("2_piccq")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=683076505]
+shape = SubResource("RectangleShape2D_wskoe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701307540]
+libraries/ = SubResource("AnimationLibrary_j01ti")
+libraries/pig = ExtResource("3_gq04r")
+autoplay = &"pig/walk"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=93692658]
+stream = SubResource("AudioStreamRandomizer_51qrm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

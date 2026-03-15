@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://de2hr0axigb73" path="res://scenes/pig/pig.gd" id="1_sjdau"]
 [ext_resource type="Texture2D" uid="uid://cd66w04arod74" path="res://assets/sprites/pig/pigtricians-spritesheet.png" id="2_sjdau"]
-[ext_resource type="AudioStream" uid="uid://dgdacjs7c7y52" path="res://assets/audio/sfx/hit/174614__yottasounds__pig004.wav" id="3_fhiwi"]
-[ext_resource type="AudioStream" uid="uid://dwr46ue6c8bk6" path="res://assets/audio/sfx/hit/380497__magedu__dog_toy_latex_pig_slow.wav" id="4_8htt8"]
-[ext_resource type="AudioStream" uid="uid://bviu1dckfqq42" path="res://assets/audio/sfx/hit/380500__magedu__dog_toy_latex_pig.wav" id="5_4mcp2"]
-[ext_resource type="AudioStream" uid="uid://crbjkulu3metg" path="res://assets/audio/sfx/hit/467571__samuelgremaud__pigs-2-small.wav" id="6_823lq"]
-[ext_resource type="AudioStream" uid="uid://dvruhuavsokrc" path="res://assets/audio/sfx/hit/529248__muteloops__pig-burp-sound.mp3" id="7_4t1r5"]
-[ext_resource type="AudioStream" uid="uid://6a5yjmiu7mq7" path="res://assets/audio/sfx/hit/561576__mattruthsound__dog-toy-rubber-pig-squeak-oink-grunt-fast-single-grunt_96khz_mono_zoomh4n_nt5.wav" id="8_n1r02"]
+[ext_resource type="AnimationLibrary" uid="uid://vsk7im30by4e" path="res://resources/animations/pig.res" id="3_rwq44"]
+[ext_resource type="AudioStream" uid="uid://dgdacjs7c7y52" path="res://assets/audio/sfx/hit/174614__yottasounds__pig004.wav" id="4_8htt8"]
+[ext_resource type="AudioStream" uid="uid://dwr46ue6c8bk6" path="res://assets/audio/sfx/hit/380497__magedu__dog_toy_latex_pig_slow.wav" id="5_4mcp2"]
+[ext_resource type="AudioStream" uid="uid://bviu1dckfqq42" path="res://assets/audio/sfx/hit/380500__magedu__dog_toy_latex_pig.wav" id="6_823lq"]
+[ext_resource type="AudioStream" uid="uid://crbjkulu3metg" path="res://assets/audio/sfx/hit/467571__samuelgremaud__pigs-2-small.wav" id="7_4t1r5"]
+[ext_resource type="AudioStream" uid="uid://dvruhuavsokrc" path="res://assets/audio/sfx/hit/529248__muteloops__pig-burp-sound.mp3" id="8_n1r02"]
+[ext_resource type="AudioStream" uid="uid://6a5yjmiu7mq7" path="res://assets/audio/sfx/hit/561576__mattruthsound__dog-toy-rubber-pig-squeak-oink-grunt-fast-single-grunt_96khz_mono_zoomh4n_nt5.wav" id="9_d5sp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wskoe"]
 size = Vector2(38, 24)
@@ -50,104 +51,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fhiwi"]
-streams_count = 6
-stream_0/stream = ExtResource("3_fhiwi")
-stream_1/stream = ExtResource("4_8htt8")
-stream_2/stream = ExtResource("5_4mcp2")
-stream_3/stream = ExtResource("6_823lq")
-stream_4/stream = ExtResource("7_4t1r5")
-stream_5/stream = ExtResource("8_n1r02")
-
-[sub_resource type="Animation" id="Animation_wskoe"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_fhiwi")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_2o6tx"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j01ti"]
 _data = {
-&"RESET": SubResource("Animation_mrr4g"),
-&"death": SubResource("Animation_wskoe"),
-&"walk": SubResource("Animation_2o6tx")
+&"RESET": SubResource("Animation_mrr4g")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y8ran"]
+streams_count = 6
+stream_0/stream = ExtResource("4_8htt8")
+stream_1/stream = ExtResource("5_4mcp2")
+stream_2/stream = ExtResource("6_823lq")
+stream_3/stream = ExtResource("7_4t1r5")
+stream_4/stream = ExtResource("8_n1r02")
+stream_5/stream = ExtResource("9_d5sp6")
 
 [node name="Pig" type="RigidBody2D" unique_id=1290696073]
 scale = Vector2(0.5, 0.5)
@@ -166,11 +83,12 @@ shape = SubResource("RectangleShape2D_wskoe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701307540]
 libraries/ = SubResource("AnimationLibrary_j01ti")
-autoplay = &"walk"
+libraries/pig = ExtResource("3_rwq44")
+autoplay = &"pig/walk"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1140838381]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=292352577]
+stream = SubResource("AudioStreamRandomizer_y8ran")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

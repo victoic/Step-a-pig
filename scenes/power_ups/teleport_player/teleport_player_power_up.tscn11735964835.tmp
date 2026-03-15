@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://b6c81a1vs88rg"]
+
+[ext_resource type="Script" uid="uid://dw7sl55te2w65" path="res://scenes/power_ups/teleport_player/teleport_player_power_up.gd" id="1_g4o5i"]
+[ext_resource type="Shader" uid="uid://qfnhrta0kxru" path="res://resources/shaders/teleport_player_power_up.gdshader" id="2_jvbyu"]
+[ext_resource type="Script" uid="uid://keqo2r1s8dx5" path="res://scenes/wall/wall.gd" id="2_x7l4h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k61v4"]
+shader = ExtResource("2_jvbyu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4o5i"]
+size = Vector2(400, 10)
+
+[sub_resource type="Animation" id="Animation_x7l4h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c08yq"]
+resource_name = "teleport"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4w76"]
+_data = {
+&"RESET": SubResource("Animation_x7l4h"),
+&"teleport": SubResource("Animation_c08yq")
+}
+
+[node name="PowerUp" type="Node2D" unique_id=1872953464]
+script = ExtResource("1_g4o5i")
+
+[node name="Timer" type="Timer" parent="." unique_id=515896985]
+wait_time = 0.3
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1304817993]
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=328446415]
+visible = false
+material = SubResource("ShaderMaterial_k61v4")
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -5.0
+offset_right = 400.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1946090728]
+position = Vector2(200, 0)
+shape = SubResource("RectangleShape2D_g4o5i")
+disabled = true
+debug_color = Color(2.8397144e-06, 0.64318687, 0.3101297, 0.41960785)
+script = ExtResource("2_x7l4h")
+side = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1812115906]
+libraries/ = SubResource("AnimationLibrary_x4w76")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

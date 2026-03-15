@@ -7,6 +7,7 @@ class_name GUI extends Control
 @onready var life2: TextureRect = $PanelContainer/HBoxContainer/Life2
 @onready var life3: TextureRect = $PanelContainer/HBoxContainer/Life3
 @onready var victory_panel: Panel = $VictoryPanel
+@onready var loss_panel: Panel = $LossPanel
 
 func change_life_icon(path: String) -> void:
 	life1.texture = load(path)
@@ -19,6 +20,9 @@ func set_phrase(text: String) -> void:
 
 func show_victory_panel() -> void:
 	victory_panel.visible = true
+
+func show_loss_panel() -> void:
+	loss_panel.visible = true
 
 func change_lives(lives: int) -> void:
 	if lives == 3:

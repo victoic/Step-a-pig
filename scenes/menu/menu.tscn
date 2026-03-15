@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dmujtxuvbvsad" path="res://scenes/menu/menu.gd" id="1_e0arn"]
 [ext_resource type="Texture2D" uid="uid://dwysyx6mpdpye" path="res://assets/backgrounds/bg-menu.png" id="2_037ec"]
 [ext_resource type="FontFile" uid="uid://ccdiaokhn6y4r" path="res://assets/fonts/Octin Spraypaint A Rg.otf" id="3_y1o0p"]
+[ext_resource type="Texture2D" uid="uid://bkmd80t3ndfyw" path="res://assets/sprites/star.png" id="4_r8yej"]
+[ext_resource type="AudioStream" uid="uid://cnfayciaoemt5" path="res://assets/audio/music/640068__kevp888__220621_1998_fr_brassband.wav" id="5_y1o0p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r8yej"]
 line_spacing = 5.0
@@ -14,6 +16,10 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(1, 0, 0, 0.5411765)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_r8yej"]
+stream_count = 1
+stream_0 = ExtResource("5_y1o0p")
 
 [node name="Menu" type="Control" unique_id=1061494638]
 layout_mode = 3
@@ -30,7 +36,23 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_037ec")
+
+[node name="Star" type="TextureRect" parent="." unique_id=1847544147]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.282
+anchor_right = 0.40500003
+anchor_bottom = 0.22900002
+offset_left = 8.039978
+offset_top = 84.0
+offset_right = -49.400024
+offset_bottom = 19.119995
+rotation = -0.8119922
+texture = ExtResource("4_r8yej")
 
 [node name="Label" type="Label" parent="." unique_id=1259857141]
 layout_mode = 1
@@ -60,14 +82,65 @@ layout_mode = 2
 theme = ExtResource("1_037ec")
 text = "Novo Jogo"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1216605218]
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=505947641]
 layout_mode = 2
-text = "Configurações"
+text = "Créditos"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=59912582]
 layout_mode = 2
 text = "Sair"
 
+[node name="Panel" type="Panel" parent="." unique_id=192018109]
+visible = false
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109000005
+anchor_top = 0.36
+anchor_right = 0.89100003
+anchor_bottom = 0.94200003
+offset_left = 0.47999573
+offset_top = -0.2000122
+offset_right = -0.47998047
+offset_bottom = -0.24005127
+
+[node name="Label" type="RichTextLabel" parent="Panel" unique_id=1209421615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 13.0
+offset_right = -19.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Créditos:
+SFX:
+- dog_toy_latex_pig_slow.wav by magedu -- https://freesound.org/s/380497/ -- License: Attribution 4.0
+- Dog toy, rubber pig, squeak, oink, grunt, fast, single grunt_96Khz_Mono_ZoomH4n_NT5.wav by MattRuthSound -- https://freesound.org/s/561576/ -- License: Attribution 4.0
+- dog_toy_latex_pig.wav by magedu -- https://freesound.org/s/380500/ -- License: Attribution 4.0
+- Pig004.wav by yottasounds -- https://freesound.org/s/174614/ -- License: Attribution 3.0
+Music:
+- 220621_1998_FR_BrassBand.wav by kevp888 -- https://freesound.org/s/640068/ -- License: Attribution 4.0
+- charade 1Q62b by Setuniman -- https://freesound.org/s/428157/ -- License: Attribution NonCommercial 4.0
+- Roman Marching music loop with dark string by deleted_user_6109353 -- https://freesound.org/s/363469/ -- License: Attribution 3.0"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Panel" unique_id=1759813292]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 344.0
+offset_right = 560.0
+offset_bottom = 393.0
+text = "Fechar"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1738597969]
+stream = SubResource("AudioStreamPlaylist_r8yej")
+autoplay = true
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
