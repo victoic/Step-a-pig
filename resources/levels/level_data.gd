@@ -24,10 +24,9 @@ const PIG_DICTIONARY: Dictionary[String, String] = {
 
 func load_map() -> Array[Array]:
 	var scenes: Array[Array] = []
-	if FileAccess.file_exists(map_file):
-		for row: String in map.split('|'):
-			scenes.append([])
-			for char: String in row:
-				if char in PIG_DICTIONARY:
-					scenes[-1].append(load(PIG_DICTIONARY[char]))
+	for row: String in map.split('|'):
+		scenes.append([])
+		for char: String in row:
+			if char in PIG_DICTIONARY:
+				scenes[-1].append(load(PIG_DICTIONARY[char]))
 	return scenes
