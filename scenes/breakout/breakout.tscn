@@ -179,7 +179,7 @@ offset_left = -0.3600006
 offset_top = 0.28199863
 offset_right = 0.19999695
 offset_bottom = -27.980003
-text = "Vidas:"
+text = "game_lives"
 label_settings = ExtResource("11_f3jbb")
 
 [node name="PanelContainer" type="AspectRatioContainer" parent="GUI" unique_id=1989008339]

@@ -18,3 +18,6 @@ func _on_credits_button_pressed() -> void:
 	
 func _on_button_pressed() -> void:
 	credits_panel.visible = false
+
+func _on_option_button_item_selected(index: int) -> void:
+	GameData.set_locale(index)

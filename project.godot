@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Step-a-Pig"
 config/description="A Breakout game about socialism	"
-config/version="1.0.1"
+config/version="1.0.2"
 config/tags=PackedStringArray("20games", "breakout", "communism", "socialism")
 run/main_scene="uid://be72sef68mjy6"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -58,6 +58,13 @@ click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(148, 10),"global_position":Vector2(157, 58),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translation_remaps={
+"res://assets/backgrounds/bg-menu-en.png": PackedStringArray("res://assets/backgrounds/bg-menu-en.png:en", "res://assets/backgrounds/bg-menu-pt.png:pt")
+}
+locale/translations=PackedStringArray("res://resources/localization/locale.en.translation", "res://resources/localization/locale.pt.translation")
 
 [physics]
 

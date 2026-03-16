@@ -5,11 +5,10 @@
 [resource]
 script = ExtResource("1_ia1ul")
 map = "222222222222222222222222|33----------------------|222222222222222222222222|----------------------33|222222222222222222222222|3----------------------3|22222222222222222222222"
-map_file = "res://assets/text/levels/level02.txt"
 bg = "res://assets/backgrounds/bg-level2.png"
 life_icon = "res://assets/icons/french.png"
 next_level = "res://resources/levels/level_3.tres"
-phrase = "Patrício e plebeu, senhor feudal e servo, burguês e proletário, oprimido e opressor"
-location_date = "França, 1789"
+phrase = "level_2_phrase"
+location_date = "level_2_location_date"
 play_music_2 = true
 metadata/_custom_type_script = "uid://dm4wcgxbydldb"

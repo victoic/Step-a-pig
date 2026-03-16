@@ -4,6 +4,9 @@
 [ext_resource type="StyleBox" uid="uid://ddpqm4w3oex0" path="res://resources/styles/menu_button_hover.tres" id="2_0jyfp"]
 [ext_resource type="StyleBox" uid="uid://bwfcbn58uvc8r" path="res://resources/styles/menu_button.tres" id="3_wgj3i"]
 [ext_resource type="StyleBox" uid="uid://b4twlkhe87vau" path="res://resources/styles/menu_button_pressed.tres" id="4_7utmw"]
+[ext_resource type="Texture2D" uid="uid://ddt54ldawstet" path="res://assets/icons/arrow.png" id="5_7utmw"]
+[ext_resource type="Texture2D" uid="uid://dkoo5n0oemysy" path="res://assets/icons/radio_checked.png" id="6_xa0py"]
+[ext_resource type="Texture2D" uid="uid://d3mhj76liaam1" path="res://assets/icons/radio_unchecked.png" id="7_yuhw2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq7pu"]
 bg_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -12,6 +15,19 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8vso"]
+bg_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qmnj"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -22,4 +38,12 @@ Button/fonts/font = ExtResource("1_aq7pu")
 Button/styles/hover = ExtResource("2_0jyfp")
 Button/styles/normal = ExtResource("3_wgj3i")
 Button/styles/pressed = ExtResource("4_7utmw")
+OptionButton/icons/arrow = ExtResource("5_7utmw")
 Panel/styles/panel = SubResource("StyleBoxFlat_aq7pu")
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/font_sizes/font_size = 22
+PopupMenu/fonts/font = ExtResource("1_aq7pu")
+PopupMenu/icons/radio_checked = ExtResource("6_xa0py")
+PopupMenu/icons/radio_unchecked = ExtResource("7_yuhw2")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_p8vso")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_6qmnj")

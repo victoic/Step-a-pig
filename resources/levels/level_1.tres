@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_hndnq")
+phrase = "level_1_phrase"
+location_date = "level_1_location_date"
 metadata/_custom_type_script = "uid://dm4wcgxbydldb"

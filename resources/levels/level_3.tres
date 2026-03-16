@@ -5,12 +5,11 @@
 [resource]
 script = ExtResource("1_jer2e")
 map = "555555555566665555555555|4444444444----4444444444|4444444444----4444444444|4444444444----4444444444|5555555555----555555555"
-map_file = "res://assets/text/levels/level03.txt"
 bg = "res://assets/backgrounds/bg-level3.png"
 life_icon = "res://assets/icons/has.png"
 next_level = "res://resources/levels/ending.tres"
-phrase = "Eles querem que você acredite que agora será diferente, que a história acabou!"
-location_date = "?, 2030"
+phrase = "level_3_phrase"
+location_date = "level_3_location_date"
 play_music_2 = true
 play_music_3 = true
 metadata/_custom_type_script = "uid://dm4wcgxbydldb"

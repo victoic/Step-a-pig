@@ -5,12 +5,11 @@
 [resource]
 script = ExtResource("1_hxlwh")
 map = "1"
-map_file = "res://assets/text/levels/ending.txt"
 bg = "res://assets/backgrounds/bg-ending.png"
 life_icon = "res://assets/icons/has.png"
 next_level = ""
-phrase = "Mas a única coisa que temos a perder são nossos grilhões, e a vitória está próxima! Enquanto isso..."
-location_date = ""
+phrase = "ending_phrase"
+location_date = "ending_location_date"
 play_music_2 = true
 play_music_3 = true
 is_ending = true

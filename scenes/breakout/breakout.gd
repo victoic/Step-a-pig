@@ -42,7 +42,7 @@ func _ready() -> void:
 	crowd.position.x = get_viewport_rect().size.x / 2
 	crowd.position.y = get_viewport_rect().size.y - (crowd.texture.get_size().y / crowd.vframes / 2)
 	gui.change_life_icon(level_data.life_icon)
-	gui.set_phrase(level_data.phrase)
+	gui.set_phrase(tr(level_data.phrase))
 
 func pause() -> void:
 	ball_paused = true
@@ -56,7 +56,7 @@ func unpause() -> void:
 
 func switch_phrase() -> void:
 	var phrase: String = level_data.location_date if gui.phrase.text == level_data.phrase else level_data.phrase
-	gui.set_phrase(phrase)
+	gui.set_phrase(tr(phrase))
 
 func set_music() -> void:
 	if level_data.play_music_1:
