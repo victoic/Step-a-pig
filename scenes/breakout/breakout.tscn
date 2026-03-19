@@ -218,6 +218,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="GUI" unique_id=1164587028]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
