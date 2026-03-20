@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://o8tttt8ku8dm"]
+
+[ext_resource type="Script" uid="uid://dfcp1uc4do1l3" path="res://scenes/power_ups/zip_ball/zip_ray_2d.gd" id="1_f3cbr"]
+
+[node name="RayCast2D" type="RayCast2D" unique_id=2119615897]
+collision_mask = 3
+script = ExtResource("1_f3cbr")

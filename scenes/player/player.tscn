@@ -20,3 +20,4 @@ polygon = PackedVector2Array(0, 0, 100, 0, 100, 10, 0, 10)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474418323]
 shape = SubResource("RectangleShape2D_rrrli")
 script = ExtResource("2_dovo2")
+side = 3

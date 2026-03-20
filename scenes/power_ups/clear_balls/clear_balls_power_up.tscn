@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://oxudgshxbclw"]
+
+[ext_resource type="Script" uid="uid://cw0lnylame4ap" path="res://scenes/power_ups/explosion_ball/explosion_ball_power_up.gd" id="1_u1qr1"]
+
+[sub_resource type="Animation" id="Animation_wvwal"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ykikv"]
+resource_name = "explosion"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whru8"]
+_data = {
+&"RESET": SubResource("Animation_wvwal"),
+&"explosion": SubResource("Animation_ykikv")
+}
+
+[node name="PowerUp" type="Node2D" unique_id=1872953464]
+script = ExtResource("1_u1qr1")
+action = "click"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1484609923]
+libraries/ = SubResource("AnimationLibrary_whru8")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

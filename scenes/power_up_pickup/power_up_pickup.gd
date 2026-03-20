@@ -12,18 +12,9 @@ func setup() -> void:
 
 static var self_scene: PackedScene = load("res://scenes/power_up_pickup/power_up_pickup.tscn")
 static var power_up_list: Array[Dictionary] = [
-	{
-		"scene": "res://scenes/power_ups/huge_ball/huge_ball_power_up.tscn",
-		"sprite": "res://assets/icons/icon_huge_ball_power_up.png"
-	}, {
-		"scene": "res://scenes/power_ups/large_player/large_player_power_up.tscn",
-		"sprite": "res://assets/icons/icon_large_player_power_up.png"
-	}, {
-		"scene": "res://scenes/power_ups/teleport_player/teleport_player_power_up.tscn",
-		"sprite": "res://assets/icons/icon_teleport_player_power_up.png"
-	}, {
-		"scene": "res://scenes/power_ups/explosion_ball/explosion_ball_power_up.tscn",
-		"sprite": "res://assets/icons/icon_explosion_ball.png"
+	 {
+		"scene": "res://scenes/power_ups/zip_ball/zip_ball_power_up.tscn",
+		"sprite": "res://assets/icons/icon_zip_ball.png"
 	}
 ]
 static func spawn() -> PowerUpPickup:

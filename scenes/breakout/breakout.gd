@@ -55,7 +55,7 @@ func unpause() -> void:
 	player_paused = false
 
 func switch_phrase() -> void:
-	var phrase: String = level_data.location_date if gui.phrase.text == level_data.phrase else level_data.phrase
+	var phrase: String = level_data.location_date if gui.phrase.text == tr(level_data.phrase) else tr(level_data.phrase)
 	gui.set_phrase(tr(phrase))
 
 func set_music() -> void:
@@ -108,6 +108,7 @@ func _on_pig_spawn_bullet(pos: Vector2) -> void:
 	if ball_scene.can_instantiate():
 		var new_ball: Ball = ball_scene.instantiate()
 		new_ball.is_one_shot = true
+		new_ball.modulate = Color(0.234, 0.234, 0.234, 1.0)
 		one_shot_balls.add_child(new_ball)
 		new_ball.position = pos
 
@@ -117,6 +118,7 @@ func _on_spawn_boom(pos: Vector2) -> void:
 	boom.position = pos
 
 func _on_restart_button_pressed() -> void:
+	GameData.cur_level = "res://resources/levels/level_1.tres"
 	get_tree().reload_current_scene()
 
 func _on_menu_button_pressed() -> void:

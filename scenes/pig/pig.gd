@@ -17,7 +17,7 @@ static var game_over_emitted: bool = false
 @export var health: int = 1
 var is_dead: bool = false
 @export var speed: Vector2 = Vector2(0, 2)
-@export var power_up_chance: float = 0.1
+@export var power_up_chance: float = 1.0#0.1
 @export var bullet_chance: float = 0.0
 @export var boom_chance: float = 0.0001
 
