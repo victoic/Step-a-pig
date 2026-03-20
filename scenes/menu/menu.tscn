@@ -56,9 +56,12 @@ texture = ExtResource("4_r8yej")
 
 [node name="Label" type="Label" parent="." unique_id=1259857141]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
+anchor_top = 0.165
 anchor_right = 1.0
-offset_bottom = 238.0
+anchor_bottom = 0.165
+offset_top = -118.8
+offset_bottom = 119.2
 grow_horizontal = 2
 text = "Step-a-Pig"
 label_settings = SubResource("LabelSettings_r8yej")
