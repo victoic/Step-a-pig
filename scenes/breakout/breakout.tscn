@@ -159,6 +159,9 @@ shape = SubResource("RectangleShape2D_im6c2")
 script = ExtResource("7_im6c2")
 side = 3
 
+[node name="BackgroundOverlay" type="Sprite2D" parent="." unique_id=1572342422]
+centered = false
+
 [node name="GUI" type="Control" parent="." unique_id=227872746]
 layout_mode = 3
 anchors_preset = 0
@@ -244,13 +247,13 @@ autowrap_mode = 2
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.441
+anchor_left = 0.38300002
 anchor_top = 0.404
-anchor_right = 0.67600006
+anchor_right = 0.61700004
 anchor_bottom = 0.633
-offset_left = 0.5199585
+offset_left = -0.24002075
 offset_top = 0.3119812
-offset_right = -0.28009033
+offset_right = 0.2399292
 offset_bottom = -0.026000977
 
 [node name="Label" type="Label" parent="GUI/VictoryPanel" unique_id=1252258599]
@@ -285,13 +288,13 @@ visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.441
+anchor_left = 0.38300002
 anchor_top = 0.404
-anchor_right = 0.67600006
+anchor_right = 0.61700004
 anchor_bottom = 0.633
-offset_left = 0.5199585
+offset_left = -0.24002075
 offset_top = 0.3119812
-offset_right = -0.28009033
+offset_right = 0.2399292
 offset_bottom = -0.026000977
 
 [node name="Label" type="Label" parent="GUI/LossPanel" unique_id=355347955]

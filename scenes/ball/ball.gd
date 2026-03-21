@@ -11,9 +11,9 @@ class_name Ball extends RigidBody2D
 		size = value
 		set_polygon()
 @export var is_one_shot: bool = false
+@export var is_alive: bool = true
 
 @onready var blank_power_up: PackedScene = load("res://scenes/power_ups/blank/blank_power_up.tscn")
-@onready var zip_power_up: PackedScene = load("res://scenes/power_ups/zip_ball/zip_ball_power_up.tscn")
 @export var power_up: PowerUp
 
 func set_polygon() -> void:
@@ -27,13 +27,17 @@ func set_polygon() -> void:
 	collision.shape.size = total_size
 
 func remove_power_up():
-	set_power_up(zip_power_up.instantiate())
+	set_power_up(blank_power_up.instantiate())
 
 func set_power_up(new_power_up: PowerUp):
 	remove_child(power_up)
 	power_up = new_power_up
 	add_child(power_up)
 	set_polygon()
+
+func die() -> void:
+	is_alive = false
+	queue_free()
 
 func reset() -> void:
 	size = Vector2(10.0, 10.0)
@@ -43,7 +47,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	reset()
-	power_up = zip_power_up.instantiate()
+	power_up = blank_power_up.instantiate()
 	add_child(power_up)
 
 func _physics_process(delta: float) -> void:

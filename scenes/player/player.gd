@@ -16,7 +16,6 @@ signal spawn_on_game(node: Node2D)
 @export var speed: float = 480
 
 @onready var blank_power_up: PackedScene = load("res://scenes/power_ups/blank/blank_power_up.tscn")
-
 @export var power_up: PowerUp
 
 var half_bar_size: Vector2 = Vector2.ZERO

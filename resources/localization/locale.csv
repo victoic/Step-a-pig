@@ -11,5 +11,7 @@ level_2_phrase,"Patrician and plebeian, lord and serf, bourgeois and proletarian
 level_2_location_date,"France, 1789","França, 1789"
 level_3_phrase,"They want you to believe that it will be different now, that the history is over!","Eles querem que você acredite que agora será diferente, que a história acabou!"
 level_3_location_date,"?, 2030","?, 2030"
-ending_phrase,"But the only thing we have to lose are our shackles, and victory is at hand! Meanwhile...","Mas a única coisa que temos a perder são nossos grilhões, e a vitória está próxima! Enquanto isso..."
+level_4_phrase,"But they create the tools for their own destruction. Even in defeat, victory gets closer!","Mas eles criam as ferramentas de sua própria destruição. Mesmo em derrota, a vitória se aproxíma!"
+level_4_location_date,"The final proletarian showdown, 20XX","O último confronto proletário, 20XX"
+ending_phrase,"The only thing we have to lose are our shackles, and victory belongs to us! Meanwhile...","A única coisa que temos a perder são nossos grilhões, e a vitória nos pertence! Enquanto isso..."
 ending_location_date,"",""

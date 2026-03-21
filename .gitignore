@@ -5,3 +5,6 @@
 *.x86_64
 *.zip
 *.pck
+export/linux/*
+export/windows/*
+export/web/*

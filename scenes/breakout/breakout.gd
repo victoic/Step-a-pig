@@ -9,6 +9,7 @@ class_name Breakout extends Node2D
 @onready var death_zone: Area2D = $DeathZone
 @onready var crowd: Sprite2D = $Crowd
 @onready var background: Sprite2D = $Background
+@onready var background_overlay: Sprite2D = $BackgroundOverlay
 @onready var gui: GUI = $GUI
 @onready var music_1: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var music_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
@@ -30,14 +31,17 @@ TODO: 	- add tutorial for power-ups
 func debug() -> void:
 	ball_paused = true
 	pigs_paused = true
-	GameData.cur_level = "res://resources/levels/ending.tres"
+	GameData.cur_level = "res://resources/levels/level_4.tres"
 
 func _ready() -> void:
+	#debug()
 	is_game_over = false
 	level_data = load(GameData.cur_level)
 	set_music()
 	pig_container.setup(level_data.load_map(), self)
 	background.texture = load(level_data.bg)
+	if level_data.bg_overlay != "none":
+		background_overlay.texture = load(level_data.bg_overlay)
 	death_zone.position = get_viewport_rect().size / 2
 	crowd.position.x = get_viewport_rect().size.x / 2
 	crowd.position.y = get_viewport_rect().size.y - (crowd.texture.get_size().y / crowd.vframes / 2)
@@ -75,7 +79,7 @@ func _on_player_game_over() -> void:
 	is_game_over = true
 
 func _on_death_zone_body_exited(body: Node2D) -> void:
-	if is_instance_of(body, Ball):
+	if is_instance_of(body, Ball) and body.is_alive:
 		player.lives -= 1
 		if body.is_one_shot:
 			body.queue_free()
@@ -108,17 +112,17 @@ func _on_pig_spawn_bullet(pos: Vector2) -> void:
 	if ball_scene.can_instantiate():
 		var new_ball: Ball = ball_scene.instantiate()
 		new_ball.is_one_shot = true
-		new_ball.modulate = Color(0.234, 0.234, 0.234, 1.0)
 		one_shot_balls.add_child(new_ball)
 		new_ball.position = pos
+		new_ball.polygon.material = null
+		new_ball.modulate = Color(0.234, 0.234, 0.234, 1.0)
 
 func _on_spawn_boom(pos: Vector2) -> void:
 	var boom: Boom = boom_scene.instantiate()
-	add_child(boom)
+	add_child.call_deferred(boom)
 	boom.position = pos
 
 func _on_restart_button_pressed() -> void:
-	GameData.cur_level = "res://resources/levels/level_1.tres"
 	get_tree().reload_current_scene()
 
 func _on_menu_button_pressed() -> void:

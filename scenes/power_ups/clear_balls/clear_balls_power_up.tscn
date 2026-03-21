@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://oxudgshxbclw"]
 
-[ext_resource type="Script" uid="uid://cw0lnylame4ap" path="res://scenes/power_ups/explosion_ball/explosion_ball_power_up.gd" id="1_u1qr1"]
+[ext_resource type="Script" uid="uid://d1080cf8nc3ua" path="res://scenes/power_ups/clear_balls/clear_balls_power_up.gd" id="1_vqo3p"]
 
 [sub_resource type="Animation" id="Animation_wvwal"]
 length = 0.001
@@ -16,7 +16,7 @@ _data = {
 }
 
 [node name="PowerUp" type="Node2D" unique_id=1872953464]
-script = ExtResource("1_u1qr1")
+script = ExtResource("1_vqo3p")
 action = "click"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1484609923]

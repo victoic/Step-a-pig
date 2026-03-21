@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://hw2o3haaxota"]
+
+[ext_resource type="Script" uid="uid://dm4wcgxbydldb" path="res://resources/levels/level_data.gd" id="1_uljcx"]
+
+[resource]
+script = ExtResource("1_uljcx")
+map = "5555555555----5555555555|---777----4444---777----|----------4444----------|7---------4444---------7|4444444444----4444444444|4444444444----4444444444|4444444444----4444444444|7---------4444---------7|----------4444----------|---777----4444---777----|5555555555----5555555555"
+bg = "res://assets/backgrounds/bg-level4.png"
+bg_overlay = "res://assets/backgrounds/bg-level4-overlay.png"
+life_icon = "res://assets/icons/has.png"
+next_level = "res://resources/levels/ending.tres"
+phrase = "level_4_phrase"
+location_date = "level_4_location_date"
+play_music_2 = true
+play_music_3 = true
+metadata/_custom_type_script = "uid://dm4wcgxbydldb"

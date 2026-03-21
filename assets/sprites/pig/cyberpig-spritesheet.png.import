@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bttopsis0kj0s"
-path="res://.godot/imported/icon_teleport_player_power_up.png-81ac479ea4aa9ab08bd59fee3ba384e8.ctex"
+uid="uid://cxvvi2ysqa5oa"
+path="res://.godot/imported/cyberpig-spritesheet.png-cf7a2830a60ae2fbb1bc69f31a23cb90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/icon_teleport_player_power_up.png"
-dest_files=["res://.godot/imported/icon_teleport_player_power_up.png-81ac479ea4aa9ab08bd59fee3ba384e8.ctex"]
+source_file="res://assets/sprites/pig/cyberpig-spritesheet.png"
+dest_files=["res://.godot/imported/cyberpig-spritesheet.png-cf7a2830a60ae2fbb1bc69f31a23cb90.ctex"]
 
 [params]
 

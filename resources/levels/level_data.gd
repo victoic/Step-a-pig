@@ -9,10 +9,12 @@ const PIG_DICTIONARY: Dictionary[String, String] = {
 	'4': "res://scenes/pig/pig.tscn",
 	'5': "res://scenes/pig/swine.tscn",
 	'6': "res://scenes/pig/snipig.tscn",
+	'7': "res://scenes/pig/cyberpig.tscn"
 }
 
 @export var map: String = '000000000000000000000000|------------------------|000000000000000000000000|------------------------|111111111111111111111111'
 @export var bg: String = "res://assets/backgrounds/bg-level1.png"
+@export var bg_overlay: String = "none"
 @export var life_icon: String = "res://assets/icons/plebs.png"
 @export var next_level: String = "res://resources/levels/level_2.tres"
 @export var phrase: String = "Até hoje, a história de todas as sociedades é a história das lutas de classes."
